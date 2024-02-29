@@ -30,6 +30,8 @@
 
 #define AUDIOTOOLS_VERSION "0.9.4"
 
+#ifndef AUDIOCONFIG_SKIP
+
 // Use fixed point multiplication instead float for VolumeStream for slightly better performance on platforms without float hardware. Tested on RP2040 at 16 bit per second (still too slow for 32bit)
 #ifndef PREFER_FIXEDPOINT
 #  define PREFER_FIXEDPOINT false 
@@ -742,6 +744,8 @@ using int24_t = audio_tools::int24_3bytes_t;
 #else
 using int24_t = audio_tools::int24_4bytes_t;
 #endif
+
+#endif // AUDIOCONFIG_SKIP
 
 #ifndef ESP32
 #define ESP_IDF_VERSION_VAL(a, b , c) 0
